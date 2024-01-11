@@ -29,7 +29,7 @@ spec:
       - env:
         - name: DS_LICENSE
           value: accept
-        image: datastax/dse-studio:6.7.0
+        image: datastax/dse-studio:6.8.0
         imagePullPolicy: ""
         name: studio
         ports:

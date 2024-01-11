@@ -2,7 +2,7 @@ version: '3'
 services:
 
   web: # Web Interface
-    image: killrvideo/killrvideo-web:3.0.0-rc1 
+    image: killrvideo/killrvideo-web:3.0.0-rc1
     ports:
       - "3000:3000" # Exposes port to be available externally
     depends_on:
@@ -12,7 +12,7 @@ services:
     labels:
       kompose.service.type: nodeport # Adds a label for Kompose to expose service externally
 
-  backend: # KillrVideo Backend 
+  backend: # KillrVideo Backend
     #image: killrvideo/killrvideo-nodejs:3.0.0-rc2
     image: killrvideo/killrvideo-services-java:latest
     ports:
@@ -23,7 +23,7 @@ services:
       KILLRVIDEO_LOGGING_LEVEL: debug # More logging
 
   studio:  # Datastax Studio provides convenient web interface to work directly with the Apache Cassandra or DataStax Enterprise
-    image: datastax/dse-studio:6.7.0
+    image: datastax/dse-studio:6.8.0
     ports:
       - "9091:9091" # Exposes port to be available externally
     depends_on:
@@ -34,7 +34,7 @@ services:
       kompose.service.type: nodeport # Adds a label for Kompose to expose service externally
 
   dse: # DataStax Enterprise Database
-    image: datastax/dse-server:6.7.0
+    image: datastax/dse-server:6.8.0
     command: [ -s -g ] # Run with Search and Graph capabilities enabled
     ports: # Exposes ports to be available. Kompose tool needs that to create a k8s service and make backend available for other services.
       - "9042:9042" # Exposes DSE port
